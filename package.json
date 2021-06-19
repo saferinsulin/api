@@ -1,0 +1,60 @@
+{
+  "name": "saferinsulin-api",
+  "version": "1.0.0",
+  "description": "saferinsulin.org API and documentation",
+  "main": "app.js",
+  "scripts": {
+    "test": "test.js",
+    "start": "apidoc -i ./routes/ -o ./public/ && nodemon ./bin/www",
+    "apidoc": "apidoc -i ./routes/ -o ./public/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jplomas/saferinsulin.git"
+  },
+  "apidoc": {
+    "title": "saferinsulin.org API",
+    "version": "1.2.3",
+    "template": {
+      "withGenerator": false
+    },
+    "url": "https://api.saferinsulin.org",
+    "name": "saferinsulin.org API",
+    "description": "",
+    "order": [
+      "POST",
+      "GET",
+      "PostStart",
+      "PostContinue",
+      "PostCheck",
+      "GetStart",
+      "GetContinue",
+      "GetCheck"
+    ],
+    "header": {
+      "title": "Introduction",
+      "filename": "header.md"
+    }
+  },
+  "author": "JP Lomas <jp@lomas.doctor>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jplomas/saferinsulin/issues"
+  },
+  "homepage": "https://github.com/jplomas/saferinsulin#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "helmet": "^4.4.1",
+    "http-errors": "~1.6.3",
+    "insulin-calc": "^1.2.3",
+    "morgan": "~1.9.1",
+    "apidoc": "^0.26.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
