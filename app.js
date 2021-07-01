@@ -15,6 +15,13 @@ var checkRouter = require('./routes/check');
 
 var app = express();
 
+var moduleVersion = (require('./node_modules/insulin-calc/package.json').version);
+var apiVersion = (require('./package.json').version);
+
+process.stdout.write('\n======== SAFERINSULIN.ORG API ========\n\n');
+process.stdout.write(`      API version: ${apiVersion}\n`);
+process.stdout.write(`      Module version: ${moduleVersion}\n\n`);
+
 // Set Content Security Policies
 app.use(
   helmet.contentSecurityPolicy({
@@ -27,296 +34,412 @@ app.use(
 
 app.use(compression());
 
+// process.stdout.write("Downloading " + data.length + " bytes\r");
+
 // tests
-console.log('Self-test in progress...');
+process.stdout.write('Self-test in progress...\r');
 var passed = 0;
 var r = calc.ongoingRate();
 if (r === false) {
-  console.log('   ... Test 1 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 1 failed');
 }
 r = calc.ongoingRate(10, 10);
 if (r === false) {
-  console.log('   ... Test 2 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 2 failed');
 }
 r = calc.ongoingRate(10);
 if (r === false) {
-  console.log('   ... Test 3 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 3 failed');
 }
 r = calc.ongoingRate(NaN, NaN, NaN);
 if (r === false) {
-  console.log('   ... Test 4 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 4 failed');
 }
 r = calc.ongoingRate(NaN, 8, NaN);
 if (r === false) {
-  console.log('   ... Test 5 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 5 failed');
 }
 r = calc.ongoingRate(NaN, 8, 1);
 if (r === false) {
-  console.log('   ... Test 6 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 6 failed');
 }
 r = calc.ongoingRate(1.3, 12.1, 1.0);
 if (r.rateNum === 0) {
-  console.log('   ... Test 7 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 7 failed');
 }
 r = calc.ongoingRate(2.4, 12.1, 1.0);
 if (r.rateNum === 0) {
-  console.log('   ... Test 8 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 8 failed');
 }
 r = calc.ongoingRate(8.6, 8.9, 1.0);
 if (r.rateNum === 1) {
-  console.log('   ... Test 9 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 9 failed');
 }
 r = calc.ongoingRate(8, 11, 5);
 if (r.rateNum === 3.6) {
-  console.log('   ... Test 10 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 10 failed');
 }
 r = calc.ongoingRate(8.2, 20, 1);
 if (r.rateNum === 0.4) {
-  console.log('   ... Test 11 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 11 failed');
 }
 r = calc.ongoingRate(16, 11.5, 2);
 if (r.rateNum === 4.8) {
-  console.log('   ... Test 12 passed');
   passed += 1;
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 12 failed');
 }
 r = calc.ongoingRate(11, 10.9, 1);
 if (r.rateNum === 2) {
   passed += 1;
-  console.log('   ... Test 13 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 13 failed');
 }
 r = calc.ongoingRate(10.5, 12.7, 1);
 if (r.rateNum === 0.8) {
   passed += 1;
-  console.log('   ... Test 14 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 14 failed');
 }
 r = calc.ongoingRate(11.1, 11.4, 2.2);
 if (r.rateNum === 2.2) {
   passed += 1;
-  console.log('   ... Test 15 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 15 failed');
 }
 r = calc.ongoingRate(13, 10, 2);
 if (r.rateNum === 4) {
   passed += 1;
-  console.log('   ... Test 16 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 16 failed');
 }
 r = calc.ongoingRate(13, 12.9, 2);
 if (r.rateNum === 3) {
   passed += 1;
-  console.log('   ... Test 17 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 17 failed');
 }
 r = calc.ongoingRate(12.5, 13, 2);
 if (r.rateNum === 3) {
   passed += 1;
-  console.log('   ... Test 18 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 18 failed');
 }
 r = calc.ongoingRate(11.7, 12.7, 2.2);
 if (r.rateNum === 2.2) {
   passed += 1;
-  console.log('   ... Test 19 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 19 failed');
 }
 r = calc.ongoingRate(5.2, 5, 2.2);
 if (r.rateNum === 0) {
   passed += 1;
-  console.log('   ... Test 20 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 20 failed');
 }
 r = calc.ongoingRate(6.2, 8.1, 2.2);
 if (r.rateNum === 1.1) {
   passed += 1;
-  console.log('   ... Test 21 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 21 failed');
 }
 r = calc.ongoingRate(7.1, 7.1, 2.2);
 if (r.rateNum === 1.1) {
   passed += 1;
-  console.log('   ... Test 22 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 22 failed');
 }
 r = calc.ongoingRate(5.1, 6.8, 1.1);
 if (r.rateNum === 0) {
   passed += 1;
-  console.log('   ... Test 23 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 23 failed');
 }
 r = calc.ongoingRate(13.1, 24, 2.0);
 if (r.rateNum === 1.1) {
   passed += 1;
-  console.log('   ... Test 24 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 24 failed');
 }
 r = calc.ongoingRate(5.8, 7, 2.0);
 if (r.rateNum === 0) {
   passed += 1;
-  console.log('   ... Test 25 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 25 failed');
 }
 r = calc.ongoingRate(7, 3.1, 0);
 if (r.rateNum === 0) {
   passed += 1;
-  console.log('   ... Test 26 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 26 failed');
 }
 r = calc.ongoingRate(7, 3.1, 0.1);
 if (r.rateNum === 0) {
   passed += 1;
-  console.log('   ... Test 27 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 27 failed');
 }
 r = calc.ongoingRate(13, 15, 2);
 if (r.rateNum === 2) {
   passed += 1;
-  console.log('   ... Test 28 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 28 failed');
 }
 r = calc.ongoingRate(14.2, 17, 3);
 if (r.rateNum === 3) {
   passed += 1;
-  console.log('   ... Test 29 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 29 failed');
 }
 r = calc.ongoingRate(14.2, 27, 3);
 if (r.rateNum === 1.6) {
   passed += 1;
-  console.log('   ... Test 30 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 30 failed');
 }
 r = calc.ongoingRate(12.3, 17.5, 2);
 if (r.rateNum === 1.4) {
   passed += 1;
-  console.log('   ... Test 31 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 31 failed');
 }
 r = calc.ongoingRate(15, 13, 2);
 if (r.rateNum === 4) {
   passed += 1;
-  console.log('   ... Test 32 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 32 failed');
 }
 r = calc.ongoingRate(16, 15, 3);
 if (r.rateNum === 5.1) {
   passed += 1;
-  console.log('   ... Test 33 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 33 failed');
 }
 r = calc.ongoingRate(17.1, 17.1, 19);
 if (r.rateNum === 18) {
   passed += 1;
-  console.log('   ... Test 34 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 34 failed');
 }
 r = calc.ongoingRate(NaN, NaN, NaN);
 if (r === false) {
   passed += 1;
-  console.log('   ... Test 35 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 35 failed');
 }
 r = calc.createGovernance({ f: 'x' });
 if (r === false) {
   passed += 1;
-  console.log('   ... Test 36 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 36 failed');
 }
 r = calc.startingRate(30);
 if (r.rateNum === 4) {
   passed += 1;
-  console.log('   ... Test 37 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 37 failed');
 }
 r = calc.startingRate(11.2);
 if (r.rateNum === 1) {
   passed += 1;
-  console.log('   ... Test 38 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 38 failed');
 }
 r = calc.startingRate(14.5);
 if (r.rateNum === 2) {
   passed += 1;
-  console.log('   ... Test 39 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 39 failed');
 }
 r = calc.startingRate(15.6);
 if (r.rateNum === 3) {
   passed += 1;
-  console.log('   ... Test 40 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 40 failed');
 }
 r = calc.startingRate(6.4);
 if (r.rate === 'N/A') {
   passed += 1;
-  console.log('   ... Test 41 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 41 failed');
 }
 r = calc.startingRate(60);
 if (r.rateNum === 4) {
   passed += 1;
-  console.log('   ... Test 42 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 42 failed');
 }
 r = calc.startingRate();
 if (r.rate === '') {
   passed += 1;
-  console.log('   ... Test 43 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 43 failed');
 }
 r = calc.startingRate('NULL');
 if (r.rate === '') {
   passed += 1;
-  console.log('   ... Test 44 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 44 failed');
 }
 r = calc.startingRate(-10.2);
 if (r.rate === '') {
   passed += 1;
-  console.log('   ... Test 45 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 45 failed');
 }
 r = calc.governance();
 if (r === null) {
   passed += 1;
-  console.log('   ... Test 46 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 46 failed');
 }
 r = calc.governance('A2-BBC43-AEFF');
 if (r === null) {
   passed += 1;
-  console.log('   ... Test 47 passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 47 failed');
 }
 r = calc.governance('9403b059-b81c6b');
 var d = r.date.substring(0, 33);
 if (r.function === 'b') {
   passed += 1;
-  console.log('   ... Test 48a passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 48a failed');
 }
 if (r.current === 5.9) {
   passed += 1;
-  console.log('   ... Test 48b passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 48b failed');
 }
 if (r.last === 8.9) {
   passed += 1;
-  console.log('   ... Test 48c passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 48c failed');
 }
 if (r.rate === 14.8) {
   passed += 1;
-  console.log('   ... Test 48d passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 48d failed');
 }
 if (d === 'Fri Nov 01 2019 13:21:00 GMT+0000') {
   passed += 1;
-  console.log('   ... Test 48e passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 48e failed');
 }
 r = calc.governance('0bc-a81c71');
 d = r.date.substring(0, 33);
 if (r.function === 'a') {
   passed += 1;
-  console.log('   ... Test 49a passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 49a failed');
 }
 if (r.current === 18.8) {
   passed += 1;
-  console.log('   ... Test 49b passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 49b failed');
 }
 if (r.last === null) {
   passed += 1;
-  console.log('   ... Test 49c passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 49c failed');
 }
 if (r.rate === null) {
   passed += 1;
-  console.log('   ... Test 49d passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 49d failed');
 }
 if (d === 'Fri Nov 01 2019 13:27:00 GMT+0000') {
   passed += 1;
-  console.log('   ... Test 49e passed');
+  process.stdout.write(`Self-test: ${passed}/57 tests passed\r`);
+} else {
+  process.stdout.write('Test 49e failed');
 }
 
-console.log(`Self-test: ${passed}/57 tests passed`);
+process.stdout.write(`Self-test: ${passed}/57 tests passed\n`);
 if (passed !== 57) {
-  console.log('*** SELF-TEST FAIL: API CANNOT START ***');
+  process.stdout.write('*** SELF-TEST FAIL: API CANNOT START ***\n');
   process.exit(1);
 }
 
-console.log('All tests passed: starting API');
+process.stdout.write('\rAll tests passed: API started');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -350,5 +473,7 @@ app.use(function (err, req, res) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+process.stdout.write('\n\nAPI running');
 
 module.exports = app;
