@@ -232,6 +232,36 @@ define({ "api": [
     "groupTitle": "GET"
   },
   {
+    "type": "get",
+    "url": "/version",
+    "title": "API/calculator module version",
+    "name": "GetVersion",
+    "group": "GET",
+    "version": "1.2.3",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "api",
+            "description": "<p>API / module version</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server",
+            "description": "<p>Server version</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/version.js",
+    "groupTitle": "GET"
+  },
+  {
     "type": "post",
     "url": "/v1/check",
     "title": "Governance hexcode check",
@@ -461,6 +491,36 @@ define({ "api": [
       }
     },
     "filename": "routes/start.js",
+    "groupTitle": "POST"
+  },
+  {
+    "type": "post",
+    "url": "/version",
+    "title": "API/calculator module version",
+    "name": "PostVersion",
+    "group": "POST",
+    "version": "1.2.3",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "api",
+            "description": "<p>API / module version</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server",
+            "description": "<p>Server version</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/version.js",
     "groupTitle": "POST"
   }
 ] });

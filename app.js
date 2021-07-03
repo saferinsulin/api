@@ -12,15 +12,16 @@ var indexRouter = require('./routes/index');
 var startInsulinRouter = require('./routes/start');
 var continueInsulinRouter = require('./routes/continue');
 var checkRouter = require('./routes/check');
+var versionRouter = require('./routes/version');
 
 var app = express();
 
-var moduleVersion = (require('./node_modules/insulin-calc/package.json').version);
-var apiVersion = (require('./package.json').version);
+var apiVersion = (require('./node_modules/insulin-calc/package.json').version);
+var serverVersion = (require('./package.json').version);
 
 process.stdout.write('\n======== SAFERINSULIN.ORG API ========\n\n');
-process.stdout.write(`      API version: ${apiVersion}\n`);
-process.stdout.write(`      Module version: ${moduleVersion}\n\n`);
+process.stdout.write(`      Server version: ${serverVersion}\n`);
+process.stdout.write(`      API version: ${apiVersion}\n\n`);
 
 // Set Content Security Policies
 app.use(
@@ -455,6 +456,7 @@ app.use('/v1/', indexRouter);
 app.use('/v1/start', startInsulinRouter);
 app.use('/v1/continue', continueInsulinRouter);
 app.use('/v1/check', checkRouter);
+app.use('/version', versionRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res) {
@@ -474,6 +476,6 @@ app.use(function (err, req, res) {
   res.render('error');
 });
 
-process.stdout.write('\n\nAPI running');
+process.stdout.write('\n\nAPI running\n\n');
 
 module.exports = app;
