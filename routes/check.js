@@ -5,7 +5,7 @@ var calc = require('insulin-calc');
 var router = express.Router();
 
 /**
- * @api {get} /check/:governance Governance hexcode check
+ * @api {get} /v1/check/:governance Governance hexcode check
  * @apiName GetCheck
  * @apiGroup GET
  * @apiVersion 1.2.3

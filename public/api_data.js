@@ -1,7 +1,7 @@
 define({ "api": [
   {
     "type": "get",
-    "url": "/check/:governance",
+    "url": "/v1/check/:governance",
     "title": "Governance hexcode check",
     "name": "GetCheck",
     "group": "GET",
