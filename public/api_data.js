@@ -162,7 +162,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/v1/start/glucose/:glucose",
+    "url": "/v1/start/:glucose",
     "title": "Starting insulin infusion",
     "name": "GetStart",
     "group": "GET",

@@ -1,6 +1,6 @@
 {
   "name": "saferinsulin-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "saferinsulin.org API and documentation",
   "main": "app.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jplomas/saferinsulin.git"
+    "url": "git+https://github.com/saferinsulin/api.git"
   },
   "apidoc": {
     "title": "saferinsulin.org API",
@@ -39,9 +39,9 @@
   "author": "JP Lomas <jp@lomas.doctor>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jplomas/saferinsulin/issues"
+    "url": "https://github.com/saferinsulin/api/issues"
   },
-  "homepage": "https://github.com/jplomas/saferinsulin#readme",
+  "homepage": "https://github.com/saferinsulin/api#readme",
   "dependencies": {
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",

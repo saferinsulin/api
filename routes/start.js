@@ -24,7 +24,6 @@ router.get('/glucose/:glucose', function (req, res) {
   console.log('======================================================');
   console.log({ ip: ip, request: req.params });
   var glucose = parseFloat(req.params.glucose);
-  // var glucose = 13.2;
   var result = calc.startingRate(glucose);
   res.send(result);
 });
@@ -50,7 +49,6 @@ router.post('/', function (req, res) {
   console.log('======================================================');
   console.log({ ip: ip, request: req.body });
   var glucose = parseFloat(req.body.glucose);
-  // var glucose = 13.2;
   var result = calc.startingRate(glucose);
   res.send(result);
 });
