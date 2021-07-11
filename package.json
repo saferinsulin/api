@@ -4,7 +4,7 @@
   "description": "saferinsulin.org API and documentation",
   "main": "app.js",
   "scripts": {
-    "test": "test.js",
+    "test": "mocha test/test.js",
     "start": "apidoc -i ./routes/ -o ./public/ && nodemon ./bin/www",
     "apidoc": "apidoc -i ./routes/ -o ./public/"
   },
@@ -55,9 +55,12 @@
     "apidoc": "^0.26.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "mocha": "^9.0.2",
+    "nodemon": "^2.0.7"
   }
 }
