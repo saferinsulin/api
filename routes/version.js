@@ -20,13 +20,7 @@ router.get('/', function (req, res) {
   console.log('======================================================');
   console.log({ ip: ip });
   var result = { api: apiVersion, server: serverVersion };
-  if (result) {
-    res.send(result);
-  } else {
-    res.statusCode = 400;
-    res.statusMessage = 'InvalidParameters';
-    res.send();
-  }
+  res.send(result);
 });
 
 /**
@@ -43,13 +37,7 @@ router.post('/', function (req, res) {
   console.log('======================================================');
   console.log({ ip: ip });
   var result = { api: apiVersion, server: serverVersion };
-  if (result) {
-    res.send(result);
-  } else {
-    res.statusCode = 400;
-    res.statusMessage = 'InvalidParameters';
-    res.send();
-  }
+  res.send(result);
 });
 
 module.exports = router;

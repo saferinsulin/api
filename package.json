@@ -1,6 +1,6 @@
 {
   "name": "saferinsulin-api",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "saferinsulin.org API and documentation",
   "main": "app.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "apidoc": {
     "title": "saferinsulin.org API",
-    "version": "1.2.3",
+    "version": "1.2.6",
     "template": {
       "withGenerator": false
     },
@@ -52,7 +52,7 @@
     "hbs": "^4.1.1",
     "helmet": "^4.4.1",
     "http-errors": "~1.6.3",
-    "insulin-calc": "^1.2.3",
+    "insulin-calc": "^1.2.6",
     "morgan": "~1.9.1"
   },
   "devDependencies": {

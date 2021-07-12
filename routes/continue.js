@@ -29,13 +29,7 @@ router.get('/glucose/:glucose?/previous/:previous?/rate/:rate?', function (req, 
   var previous = parseFloat(req.params.previous);
   var rate = parseFloat(req.params.rate);
   var result = calc.ongoingRate(glucose, previous, rate);
-  if (result) {
-    res.send(result);
-  } else {
-    res.statusCode = 400;
-    res.statusMessage = 'InvalidParameters';
-    res.send();
-  }
+  res.send(result);
 });
 
 /**
@@ -62,15 +56,8 @@ router.post('/', function (req, res) {
   var glucose = parseFloat(req.body.glucose);
   var previous = parseFloat(req.body.previous);
   var rate = parseFloat(req.body.rate);
-  console.log({glucose, previous, rate})
   var result = calc.ongoingRate(glucose, previous, rate);
-  if (result) {
-    res.send(result);
-  } else {
-    res.statusCode = 400;
-    res.statusMessage = 'InvalidParameters';
-    res.send();
-  }
+  res.send(result);
 });
 
 module.exports = router;

@@ -1,6 +1,6 @@
 {
   "title": "saferinsulin.org API",
-  "version": "1.2.3",
+  "version": "1.2.6",
   "template": {
     "withGenerator": false
   },
@@ -26,7 +26,7 @@
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2021-07-11T18:04:25.871Z",
+    "time": "2021-07-12T18:27:29.083Z",
     "url": "https://apidocjs.com",
     "version": "0.26.0"
   }
