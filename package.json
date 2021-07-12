@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha test/test.js",
     "start": "apidoc -i ./routes/ -o ./public/ && nodemon ./bin/www",
-    "apidoc": "apidoc -i ./routes/ -o ./public/"
+    "apidoc": "apidoc -i ./routes/ -o ./public/",
+    "coverage": "nyc yarn test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
   },
   "homepage": "https://github.com/saferinsulin/api#readme",
   "dependencies": {
+    "apidoc": "^0.26.0",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -51,16 +53,18 @@
     "helmet": "^4.4.1",
     "http-errors": "~1.6.3",
     "insulin-calc": "^1.2.3",
-    "morgan": "~1.9.1",
-    "apidoc": "^0.26.0"
+    "morgan": "~1.9.1"
   },
   "devDependencies": {
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
+    "coveralls": "^3.1.1",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "mocha": "^9.0.2",
-    "nodemon": "^2.0.7"
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0"
   }
 }
