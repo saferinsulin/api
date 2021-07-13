@@ -37,6 +37,12 @@
       "filename": "header.md"
     }
   },
+  "nyc": {
+    "exclude": [
+      "selftest.js",
+      "test/**"
+    ]
+  },
   "author": "JP Lomas <jp@lomas.doctor>",
   "license": "MIT",
   "bugs": {

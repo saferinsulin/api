@@ -174,3 +174,14 @@ describe('/v1 redirects to api docs', () => {
     });
   });
 });
+
+describe('Error handling', () => {
+  it('server should return a 500 when an error is encountered', () => {
+    it('500 error will correctly return', (done) => {
+      chai.request(app).post('/version').send({ testing: true }).end((err, res) => {
+        expect(res).to.have.status(500);
+        done();
+      });
+    });
+  })
+});
