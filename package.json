@@ -50,6 +50,7 @@
   },
   "homepage": "https://github.com/saferinsulin/api#readme",
   "dependencies": {
+    "@saferinsulin/core": "^2.0.2",
     "apidoc": "^0.26.0",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
@@ -58,9 +59,7 @@
     "hbs": "^4.1.1",
     "helmet": "^4.4.1",
     "http-errors": "~1.6.3",
-    "@saferinsulin/core": "^2.0.2",
-    "morgan": "~1.9.1",
-    "apidoc": "^0.26.0"
+    "morgan": "~1.9.1"
   },
   "devDependencies": {
     "chai": "^4.3.4",
