@@ -1,6 +1,7 @@
 /* eslint no-console:0 */
 var express = require('express');
-var calc = require('insulin-calc');
+var Calc = require('@saferinsulin/core');
+var calc = new Calc();
 
 var router = express.Router();
 
@@ -29,7 +30,13 @@ router.get('/glucose/:glucose?/previous/:previous?/rate/:rate?', function (req, 
   var previous = parseFloat(req.params.previous);
   var rate = parseFloat(req.params.rate);
   var result = calc.ongoingRate(glucose, previous, rate);
-  res.send(result);
+  if (result) {
+    res.send(result);
+  } else {
+    res.statusCode = 400;
+    res.statusMessage = 'InvalidParameters';
+    res.send();
+  }
 });
 
 /**
@@ -57,7 +64,13 @@ router.post('/', function (req, res) {
   var previous = parseFloat(req.body.previous);
   var rate = parseFloat(req.body.rate);
   var result = calc.ongoingRate(glucose, previous, rate);
-  res.send(result);
+  if (result) {
+    res.send(result);
+  } else {
+    res.statusCode = 400;
+    res.statusMessage = 'InvalidParameters';
+    res.send();
+  }
 });
 
 module.exports = router;

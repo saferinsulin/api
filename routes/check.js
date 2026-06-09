@@ -1,11 +1,12 @@
 /* eslint no-console: 0 */
 var express = require('express');
-var calc = require('insulin-calc');
+var Calc = require('@saferinsulin/core');
+var calc = new Calc();
 
 var router = express.Router();
 
 /**
- * @api {get} /v1/check/:governance Governance hexcode check
+ * @api {get} /check/:governance Governance hexcode check
  * @apiName GetCheck
  * @apiGroup GET
  * @apiVersion 1.2.3
