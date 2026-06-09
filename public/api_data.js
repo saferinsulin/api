@@ -5,7 +5,7 @@ define({ "api": [
     "title": "Governance hexcode check",
     "name": "GetCheck",
     "group": "GET",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -157,7 +157,7 @@ define({ "api": [
     "title": "Continuing an insulin infusion",
     "name": "GetContinue",
     "group": "GET",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -327,7 +327,7 @@ define({ "api": [
     "title": "Starting insulin infusion",
     "name": "GetStart",
     "group": "GET",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -469,7 +469,7 @@ define({ "api": [
     "title": "API/calculator module version",
     "name": "GetVersion",
     "group": "GET",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "success": {
       "fields": {
         "Success 200": [
@@ -529,7 +529,7 @@ define({ "api": [
     "title": "Governance hexcode check",
     "name": "PostCheck",
     "group": "POST",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -681,7 +681,7 @@ define({ "api": [
     "title": "Continuing an insulin infusion",
     "name": "PostContinue",
     "group": "POST",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -851,7 +851,7 @@ define({ "api": [
     "title": "Starting insulin infusion",
     "name": "PostStart",
     "group": "POST",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -993,7 +993,7 @@ define({ "api": [
     "title": "API/calculator module version",
     "name": "PostVersion",
     "group": "POST",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "success": {
       "fields": {
         "Success 200": [
