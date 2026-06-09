@@ -1,4 +1,5 @@
-var calc = require('insulin-calc');
+var Calc = require('@saferinsulin/core');
+var calc = new Calc();
 
 exports.start = function () {
   // tests

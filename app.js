@@ -19,7 +19,7 @@ var versionRouter = require('./routes/version');
 
 var app = express();
 
-var apiVersion = (require('./node_modules/insulin-calc/package.json').version);
+var apiVersion = (require('./node_modules/@saferinsulin/core/package.json').version);
 var serverVersion = (require('./package.json').version);
 
 process.stdout.write('\n======== SAFERINSULIN.ORG API ========\n\n');

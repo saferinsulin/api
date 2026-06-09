@@ -3,7 +3,7 @@ var express = require('express');
 
 var router = express.Router();
 
-var apiVersion = (require('../node_modules/insulin-calc/package.json').version);
+var apiVersion = (require('../node_modules/@saferinsulin/core/package.json').version);
 var serverVersion = (require('../package.json').version);
 
 /**
