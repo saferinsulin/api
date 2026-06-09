@@ -343,6 +343,10 @@ app.use('/v1/', indexRouter);
 app.use('/v1/start', startInsulinRouter);
 app.use('/v1/continue', continueInsulinRouter);
 app.use('/v1/check', checkRouter);
+app.use('/v2/', indexRouter);
+app.use('/v2/start', startInsulinRouter);
+app.use('/v2/continue', continueInsulinRouter);
+app.use('/v2/check', checkRouter);
 app.use('/version', versionRouter);
 
 // catch 404 and forward to error handler

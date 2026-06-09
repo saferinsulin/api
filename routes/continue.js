@@ -22,6 +22,24 @@ var router = express.Router();
  * @apiSuccess {String[]} advice.text Line by line advice text
  * @apiSuccess {String} hex Governance hexcode
  */
+
+/**
+ * @api {get} /v2/continue/glucose/:glucose/previous/:previous/rate/:rate Continuing an insulin infusion
+ * @apiName GetContinue
+ * @apiGroup GET
+ * @apiVersion 2.0.2
+ *
+ * @apiParam {Number} glucose Current blood glucose reading (mmol/L)
+ * @apiParam {Number} previous Previous blood glucose reading (mmol/L)
+ * @apiParam {Number} rate Current fast-acting insulin rate (ml/hr)
+ *
+ * @apiSuccess {String} rate Rate to set insulin (including units/hr).
+ * @apiSuccess {Number} rateNum Rate as Number (Float)
+ * @apiSuccess {Object} advice Advice
+ * @apiSuccess {String} advice.type Type of advice
+ * @apiSuccess {String[]} advice.text Line by line advice text
+ * @apiSuccess {String} hex Governance hexcode
+ */
 router.get('/glucose/:glucose?/previous/:previous?/rate/:rate?', function (req, res) {
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   console.log('======================================================');
@@ -44,6 +62,24 @@ router.get('/glucose/:glucose?/previous/:previous?/rate/:rate?', function (req, 
  * @apiName PostContinue
  * @apiGroup POST
  * @apiVersion 1.2.3
+ *
+ * @apiParam {Number} glucose Current blood glucose reading (mmol/L)
+ * @apiParam {Number} previous Previous blood glucose reading (mmol/L)
+ * @apiParam {Number} rate Current fast-acting insulin rate (ml/hr)
+ *
+ * @apiSuccess {String} rate Rate to set insulin (including units/hr).
+ * @apiSuccess {Number} rateNum Rate as Number (Float)
+ * @apiSuccess {Object} advice Advice
+ * @apiSuccess {String} advice.type Type of advice
+ * @apiSuccess {String[]} advice.text Line by line advice text
+ * @apiSuccess {String} hex Governance hexcode
+ */
+
+/**
+ * @api {post} /v2/continue Continuing an insulin infusion
+ * @apiName PostContinue
+ * @apiGroup POST
+ * @apiVersion 2.0.2
  *
  * @apiParam {Number} glucose Current blood glucose reading (mmol/L)
  * @apiParam {Number} previous Previous blood glucose reading (mmol/L)

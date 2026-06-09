@@ -15,6 +15,16 @@ var serverVersion = (require('../package.json').version);
  * @apiSuccess {String} api API / module version
  * @apiSuccess {String} server Server version
  */
+
+/**
+ * @api {get} /version API/calculator module version
+ * @apiName GetVersion
+ * @apiGroup GET
+ * @apiVersion 2.0.2
+ *
+ * @apiSuccess {String} api API / module version
+ * @apiSuccess {String} server Server version
+ */
 router.get('/', function (req, res) {
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   console.log('======================================================');
@@ -28,6 +38,16 @@ router.get('/', function (req, res) {
  * @apiName PostVersion
  * @apiGroup POST
  * @apiVersion 1.2.3
+ *
+ * @apiSuccess {String} api API / module version
+ * @apiSuccess {String} server Server version
+ */
+
+/**
+ * @api {post} /version API/calculator module version
+ * @apiName PostVersion
+ * @apiGroup POST
+ * @apiVersion 2.0.2
  *
  * @apiSuccess {String} api API / module version
  * @apiSuccess {String} server Server version
